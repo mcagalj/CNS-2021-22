@@ -1,0 +1,40 @@
+app:
+  title: Crypto@FESB
+  username: john_doe
+  jwt_algorithm: HS256
+  max_plaintext_size: 64
+  jwt_secret_key: 254Y6t/DLXCbzZjEZIFS5KXS0aQdWTmC80UK3rs76dE=
+  key_seed: M10bs32tyaZGPIw7Pea50LJDMMZMSkQ0/vSYVoaeGwI=
+lab:
+  arp:
+    scope: arp
+    password: iricirenen
+    cookie: thedeasecaneremb
+    challenge: No statement can catch the ChuckNorrisException.
+  ecb:
+    scope: ecb
+    password: oresorinet
+    cookie: tlewheemeblftalo
+    challenge:
+      '"Let the Bodies Hit the Floor" was originally written as Chuck Norris''
+      theme song.'
+  cbc:
+    scope: cbc
+    password: twitavesit
+    challenge: chopsticks
+    iv_increment: 4
+  ctr:
+    scope: ctr
+    password: cinonwitha
+    difficulty: 12
+    challenge:
+      Chuck Norris began selling the Total Gym as an ill-fated attempt to
+      make his day-to-day opponents less laughably pathetic.
+  asymmetric:
+    scope: asymmetric
+    key_size: 2048
+    password: toraddmidi
+    challenge:
+      When J. Robert Oppenheimer said "I am become death, the destroyer Of
+      worlds", He was not referring to the atomic bomb. He was referring to the Chuck
+      Norris halloween costume he was wearing.

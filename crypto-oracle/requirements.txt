@@ -1,0 +1,10 @@
+cryptography
+fastapi==0.72.0
+glom==22.1.0
+Jinja2==3.0.3
+pycryptodome==3.13.0
+pydantic==1.9.0
+python-jose==3.3.0
+python-multipart==0.0.5
+PyYAML==6.0
+uvicorn==0.17.0

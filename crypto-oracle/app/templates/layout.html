@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto labs</title>
+    <link rel="shortcut icon" href="{{ url_for('static', path='/favicon.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-lg-8 mx-auto p-5">
+        <h1 class="d-flex align-items-center pb-3 mb-5 border-bottom">{{title}}</h1>
+        {% block content %}{% endblock %}
+    </div>
+    <script>
+        var ws = new WebSocket("ws://localhost:{{port}}/ws/{{client_id}}");
+        ws.onmessage = function (event) {
+            var messages = document.getElementById('messages')
+            var message = document.createElement('li')
+
+            clientText = event.data.substring(0, event.data.indexOf(":") + 1)
+            messageText = event.data.substring(event.data.indexOf(":") + 1)
+            message.classList.add('list-group-item')
+            var clientTextNode = document.createTextNode(clientText)
+            var messageTextNode = document.createTextNode(messageText)
+
+            var clientSpan = document.createElement('span')
+            var messageSpan = document.createElement('span')
+
+            clientSpan.appendChild(clientTextNode)
+            messageSpan.appendChild(messageTextNode)
+            clientSpan.classList.add('fw-bold')
+            clientSpan.classList.add('text-primary')
+            if (!clientText) {
+                message.classList.add('list-group-item-warning')
+                message.classList.add('list-group-item')
+                messageSpan.classList.add('fw-bold')
+            }
+
+
+            message.appendChild(clientSpan)
+            message.appendChild(messageSpan)
+            messages.appendChild(message)
+        };
+    </script>
+</body>
+
+</html>

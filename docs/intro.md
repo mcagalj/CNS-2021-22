@@ -14,7 +14,7 @@ Student rješava izazove u interackciji sa REST API serverom kojeg kolokvijalno 
 
 > Uspješnom dekripcijom izazova, student uz novu činjenicu o Chuck Norrisu, otkriva i **zaporku** potrebnu za pristup sljedećoj vježbi.
 
-Server je pisan u Python web okviru [FastAPI](https://fastapi.tiangolo.com/). Izvorni kod servera dostupan je u GitHub repozitoriju [CNS-2021-22](https://github.com/mcagalj/CNS-2021-22). Za kriptografske potrebe korištena je Python biblioteka (_package_) [`cryptography`](https://cryptography.io).
+Server je pisan u Python web okviru [FastAPI](https://fastapi.tiangolo.com/). Izvorni kod servera dostupan je u ovom repozitoriju [crypto-oracle](/crypto-oracle/). Za kriptografske potrebe korištena je Python biblioteka (_package_) [`cryptography`](https://cryptography.io).
 
 ### Pristup osobnom serveru
 
@@ -35,7 +35,7 @@ Nakon uspješnog rješavanja pojedine laboratorijske vježbe, student pohranjuje
 ## Važni linkovi
 
 - [Python `cryptography` package](https://cryptography.io)
-- [Crypto Oracle source code](/crypto-oracle)
+- [Crypto Oracle source code](/crypto-oracle/)
   
 Interni linkovi (dostupni isključivo sa lokalne mreže):
 
