@@ -25,19 +25,23 @@ U okviru vježbe upoznajemo se s osnovnim sigurnosnim prijetnjama i ranjivostima
 
 Dekriptirati _crypto_ izazov (_challenge_) enkriptiran _AES šifrom u CBC enkripcijskom modu rada_ (AES-CBC); korištene kratice i terminologija vam u ovom trenutku možda nisu bliske ni poznate, no s vremenom će sve "sjesti na svoje mjesto". Dekripcijski ključ potreban za dekripciju izazova otkriti ćete u interakciji s _crypto oracle_ serverom .
 
-Ključ za enkripciju/dekripciju, u okviru ove vježbe, izveden je iz tajne vrijednosti koju zovemo _cookie_. Tajni _cookie_ možete dohvatiti slanjem sljedećeg REST API zahtjeva _crypto oracle_ serveru: `GET /arp/cookie`. Ovaj zahtjev mora biti autoriziran odgovarajućim autentikacijskim tokenom. Token možete dobiti slanjem korisničkog imena (ime vašeg Docker _container_-a) i lozinke vašem _crypto oracle_ serveru: `POST username=my_name&password=my_pass /arp/token`.
+Ključ za enkripciju/dekripciju, u okviru ove vježbe, izveden je iz tajne vrijednosti koju zovemo _cookie_. Tajni _cookie_ možete dobiti slanjem sljedećeg REST API zahtjeva _crypto oracle_ serveru: `GET /arp/cookie`. Ovaj zahtjev mora biti autoriziran odgovarajućim autentikacijskim tokenom. Token možete dobiti slanjem korisničkog imena (ime vašeg Docker _container_-a) i odgovarajuće lozinke _crypto oracle_ serveru kako slijedi:
 
-## Zadatak u koracima
+```txt
+POST username=my_name&password=my_pass /arp/token`
+```
 
 > Zadatak u koracima: (password &rarr;) token &rarr;  cookie &rarr; key &rarr; Chuck Norris fact.
 
+## Zadatak u koracima
+
 ### Presretanje autentikacijskog tokena
 
-> Zadatak u koracima: (password &rarr;) **token** &rarr;  cookie &rarr; key &rarr; Chuck Norris fact.
+> Zadatak u koracima: **token** &rarr;  cookie &rarr; key &rarr; Chuck Norris fact.
 
 Iskoristiti ranjivost ARP protokola i izvršiti MitM napad na način da presretnete komunikaciju između _crypto oracle_ servera i računala `arp_client`. Računalo `arp_client` periodično se logira na _crypto oracle_ server slanjem zahtjeva:
 
-```http
+```txt
 POST username=my_name&password=my_pass /arp/token
 ```
 
@@ -102,17 +106,17 @@ Za izvođenje ovog napada, za student će koristiti specijalizirano napadačko r
 
 ### Tajni `cookie`
 
-> Zadatak u koracima: (password &rarr;) token &rarr;  **cookie** &rarr; key &rarr; Chuck Norris fact.
+> Zadatak u koracima: token &rarr;  **cookie** &rarr; key &rarr; Chuck Norris fact.
 
 ### Dekripcijski ključ
 
-> Zadatak u koracima: (password &rarr;) token &rarr;  cookie &rarr; **key** &rarr; Chuck Norris fact.
+> Zadatak u koracima: token &rarr;  cookie &rarr; **key** &rarr; Chuck Norris fact.
 
 **HINT:** Pogledati _output_ sa prošlih labova i/ili pogledati izvorni kod _crypto_oracle_-a (kako se izvodi enkripcijski ključ za enkripciju izazova za ARP lab).
 
 ### Dekripcija izazova
 
-> Zadatak u koracima: (password &rarr;) token &rarr;  cookie &rarr; key &rarr; **Chuck Norris fact**.
+> Zadatak u koracima: token &rarr;  cookie &rarr; key &rarr; **Chuck Norris fact**.
 
 **HINT:** Pogledati _output_ sa prošlih labova i/ili pogledati izvorni kod _crypto_oracle_-a (kako se enkriptira izazov za ARP lab).
 
