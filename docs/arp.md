@@ -1,5 +1,5 @@
 
-# **Kriptografija i mrežna sigurnost - Lab 1** <!-- omit in toc -->
+# **Kriptografija i mrežna sigurnost - Lab 2** <!-- omit in toc -->
 
 - [Man-in-the-middle attacks (ARP spoofing)](#man-in-the-middle-attacks-arp-spoofing)
 - [ARP spoofing](#arp-spoofing)
