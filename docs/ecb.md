@@ -1,5 +1,9 @@
-# **Kriptografija i mrežna sigurnost - Lab 3**
+# **Kriptografija i mrežna sigurnost - Lab 3** <!-- omit in toc -->
 
+- [ECB mode vulnerabilities](#ecb-mode-vulnerabilities)
+- [Zadatak](#zadatak)
+  - [Zadatak detaljno](#zadatak-detaljno)
+  - [Korisne smjernice za automatizaciju u Pythonu](#korisne-smjernice-za-automatizaciju-u-pythonu)
 ## ECB mode vulnerabilities
 
 _Electronic Code Book_ (ECB) način je enkripcije poruka primjenom blok šifri kao što je AES. Budući da blok šifre rade s blokovima fiksne duljine (npr. AES koristi 128-bitne blokove), poruke koje su dulje od nominalne duljine bloka dane šifre enkriptiramo na način da poruku razbijemo na više blokova prije enkripcije. U ECB modu svaki blok se zatim enkriptira/dekriptira neovisno od drugih blokova (vidi sliku u nastavku).
@@ -21,7 +25,7 @@ Zadatak studenta u okviru vježbe je dekriptirati odgovarajući izazov (_challen
 
 > Zadatak u koracima: _password_ &rarr; token &rarr; cookie &rarr; key &rarr; Chuck Norris fact. Prisjetite se, _password_ ste otkrili u prethodnoj vježbi.
 
-## Zadatak detaljno
+### Zadatak detaljno
 
 U ovoj vježbi student će slati HTTP POST zahtjeve _crypto oracle_ serveru na _path_ `/ecb`, npr.:
 
@@ -57,7 +61,7 @@ _Crypto oracle_ server uzima ovaj _plaintext_, spaja ga s tajnim _cookie_-jem, e
 
 4. S obzirom da ovaj **chosen-plaintext** napad zahtjeva višekratnu interakciju (par stotina zahtjeva) sa _crypto_oracle_ serverom, pokušajte automatizirati napad prema smjernicama u nastavku.
 
-## Korisne smjernice za Python skriptu
+### Korisne smjernice za automatizaciju u Pythonu
 
 Python skripte porećite u virtualnim Python okrženjima. Detaljne upute kako kreirati i aktivirati Python virtualno okruženje dane su u uvodnim vježbama ([Lab 1 - Setting up the stage](intro.md)).
 
