@@ -4,6 +4,11 @@
 - [Zadatak](#zadatak)
   - [Zadatak detaljno](#zadatak-detaljno)
   - [Korisne smjernice za automatizaciju u Pythonu](#korisne-smjernice-za-automatizaciju-u-pythonu)
+    - [Spajanje (koncatenacija) stringova](#spajanje-koncatenacija-stringova)
+    - [Iteriranje kroz string](#iteriranje-kroz-string)
+    - [`requests` biblioteka](#requests-biblioteka)
+    - [Dohvaćanje tokena (POST /ecb/token)](#dohvaćanje-tokena-post-ecbtoken)
+    - [Slanje HTTP zahtjeva autoriziranog tokenom](#slanje-http-zahtjeva-autoriziranog-tokenom)
 ## ECB mode vulnerabilities
 
 _Electronic Code Book_ (ECB) način je enkripcije poruka primjenom blok šifri kao što je AES. Budući da blok šifre rade s blokovima fiksne duljine (npr. AES koristi 128-bitne blokove), poruke koje su dulje od nominalne duljine bloka dane šifre enkriptiramo na način da poruku razbijemo na više blokova prije enkripcije. U ECB modu svaki blok se zatim enkriptira/dekriptira neovisno od drugih blokova (vidi sliku u nastavku).
@@ -63,7 +68,70 @@ _Crypto oracle_ server uzima ovaj _plaintext_, spaja ga s tajnim _cookie_-jem, e
 
 ### Korisne smjernice za automatizaciju u Pythonu
 
-Python skripte porećite u virtualnim Python okrženjima. Detaljne upute kako kreirati i aktivirati Python virtualno okruženje dane su u uvodnim vježbama ([Lab 1 - Setting up the stage](intro.md)).
+> Python skripte pokrećite u virtualnim Python okrženjima. Detaljne upute kako kreirati i aktivirati Python virtualno okruženje nalaze su u uvodnim vježbama ([Lab 1 - Setting up the stage](intro.md)).
 
+#### Spajanje (koncatenacija) stringova
 
-TBA ...
+```python
+print("ab" + "c")
+```
+
+#### Iteriranje kroz string
+
+```python
+for letter in "is this the real world or is this just fantasy":
+    print(c)
+```
+
+#### `requests` biblioteka
+
+Koristite `requests` biblioteku za slanje HTTP zahtjeva _crypto_oracle_ serveru. Instalirajte biblioteku (u virtualnom okruženju) kako slijedi:
+
+```bash
+pip install requests
+```
+
+#### Dohvaćanje tokena (POST /ecb/token)
+
+```python
+username = "username"
+password = "password"
+url = "http://your_IP_address/ecb/token"
+
+response = requests.post(
+    url=url,
+    headers={
+        "accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+    },     
+    data = {
+        "username": username,
+        "password": password
+    } 
+)
+
+# print(response.status_code)
+token = response.json().get("access_token")
+print(token)
+```
+
+#### Slanje HTTP zahtjeva autoriziranog tokenom
+
+```python
+# First get the token as shown above
+token = "your_token"
+url = "http://your_IP_address/ecb"
+
+response = requests.post(
+    url=url,
+    headers={
+        "accept": "application/json",
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    },    
+    json = {"plaintext": "xyz"}
+)
+
+# print(response.status_code)
+print(response.json().get("ciphertext"))
+```
