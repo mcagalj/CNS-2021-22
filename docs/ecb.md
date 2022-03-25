@@ -4,7 +4,7 @@
 - [Zadatak](#zadatak)
   - [Zadatak detaljno](#zadatak-detaljno)
   - [Korisne smjernice za automatizaciju u Pythonu](#korisne-smjernice-za-automatizaciju-u-pythonu)
-    - [Spajanje (koncatenacija) stringova](#spajanje-koncatenacija-stringova)
+    - [Spajanje stringova](#spajanje-stringova)
     - [Iteriranje kroz string](#iteriranje-kroz-string)
     - [`requests` biblioteka](#requests-biblioteka)
     - [Dohvaćanje tokena (POST /ecb/token)](#dohvaćanje-tokena-post-ecbtoken)
@@ -70,7 +70,7 @@ _Crypto oracle_ server uzima ovaj _plaintext_, spaja ga s tajnim _cookie_-jem, e
 
 > Python skripte pokrećite u virtualnim Python okrženjima. Detaljne upute kako kreirati i aktivirati Python virtualno okruženje nalaze su u uvodnim vježbama ([Lab 1 - Setting up the stage](intro.md)).
 
-#### Spajanje (koncatenacija) stringova
+#### Spajanje stringova
 
 ```python
 print("ab" + "c")
@@ -80,7 +80,7 @@ print("ab" + "c")
 
 ```python
 for letter in "is this the real world or is this just fantasy":
-    print(c)
+    print(letter)
 ```
 
 #### `requests` biblioteka
