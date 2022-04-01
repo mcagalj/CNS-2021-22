@@ -34,6 +34,7 @@ class ECB(BaseSettings):
 class CBC(BaseSettings):
     prefix: str = '/cbc'
     scope: Literal['cbc'] = glom(settings, "lab.cbc.scope")
+    cookie: str = glom(settings, "lab.cbc.cookie")
     challenge: str = glom(settings, "lab.cbc.challenge")
     password: str = glom(settings, "lab.cbc.password")
     iv_increment: int = glom(settings, "lab.cbc.iv_increment")

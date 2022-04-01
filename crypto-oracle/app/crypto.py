@@ -121,6 +121,25 @@ def cbc_encrypt(key: bytes, plaintext: str, iv: bytes = None) -> Challenge:
 
     if not iv:
         iv = os.urandom(16)
+
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv))
+    encryptor = cipher.encryptor()
+    ciphertext = encryptor.update(padded_data)
+    ciphertext += encryptor.finalize()
+
+    encoded_iv = b64encode(iv)
+    encoded_ciphertext = b64encode(ciphertext)
+    return Challenge(iv=encoded_iv, ciphertext=encoded_ciphertext)
+
+
+def cbc_encrypt_hex(key: bytes, plaintext: str, iv: bytes = None) -> Challenge:
+    padder = padding.PKCS7(128).padder()
+    padded_data = padder.update(bytes.fromhex(plaintext))
+    padded_data += padder.finalize()
+
+    if not iv:
+        iv = os.urandom(16)
+
     cipher = Cipher(algorithms.AES(key), modes.CBC(iv))
     encryptor = cipher.encryptor()
     ciphertext = encryptor.update(padded_data)

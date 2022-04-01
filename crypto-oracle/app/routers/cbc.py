@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from base64 import b64decode
 
 from app.config import get_app_settings, cbc
@@ -13,7 +13,8 @@ from app.crypto import (
     Plaintext,
     Challenge,
     derive_key,
-    cbc_encrypt
+    cbc_encrypt_hex,
+    encrypt_challenge
 )
 
 
@@ -27,12 +28,15 @@ validate_access = validate_scope(scope=cbc.scope)
 settings = get_app_settings()
 
 key = derive_key(settings.key_seed)
-challenge = cbc_encrypt(key, cbc.challenge)
-iv = b64decode(challenge.iv)
+encrypted_cookie = cbc_encrypt_hex(key, cbc.cookie.encode().hex())
+iv = b64decode(encrypted_cookie.iv)
 iv = int.from_bytes(iv, byteorder="big")
 
+# Key for encrypting the challenge
+challenge_key = derive_key(cbc.cookie)
+challenge = encrypt_challenge(challenge_key, cbc.challenge)
 
-@router.post('/token', response_model=Token)
+@router.post("/token", response_model=Token)
 def get_token(token: Token = Depends(get_token_for_route(route_credentials))):
     return token
 
@@ -40,12 +44,19 @@ def get_token(token: Token = Depends(get_token_for_route(route_credentials))):
 def encrypt_plaintext(plaintext: Plaintext):
     global iv # to avoid iv becoming local to this scope
     iv += cbc.iv_increment
-    ciphertext = cbc_encrypt(
-        key=key,
-        plaintext=plaintext.plaintext,
-        iv=iv.to_bytes(16, byteorder="big")
-    )
+    try:
+        ciphertext = cbc_encrypt_hex(
+            key=key,
+            plaintext=plaintext.plaintext,
+            iv=iv.to_bytes(16, byteorder="big")
+        )
+    except ValueError as error:
+            raise HTTPException(status_code=400, detail=repr(error))
     return ciphertext
+
+@router.get("/iv/encrypted_cookie", response_model=Challenge)
+def read_encrypted_cookie():
+      return encrypted_cookie
 
 @router.get("/iv/challenge", response_model=Challenge)
 def read_challenge():
