@@ -114,7 +114,7 @@ if __name__ == '__main__':
     ALPHABET = "abcdefghijklmnopqrstuvwxyz"
     cookie = ""
 
-    path = "ecb"
+    path = "ecb/"
     url = f"http://{host}/{path}"
     for i in range(1, COOKIE_SIZE + 1):
         prefix = "x"*(BLOCK_SIZE - i)
