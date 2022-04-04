@@ -60,11 +60,11 @@ Pretpostavimo da _V_ i _A_ ispunjavaju anketu gdje se trebaju odrediti po pitanj
 **Chosen-plaintext attack (CPA)**
 
 
-|     Tko     | Što                                                                                        | Napomena                                                               |
+|  Tko šalje  | Što šalje                                                                                  | Napomena                                                               |
 | :---------: | :----------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- |
 | V &rarr; S  | p<sub>V</sub> = "yes" or "no"                                                              | over secure channel                                                    |
 | S &rarr; DB | IV<sub>V</sub>, C<sub>V</sub> = E<sub>K</sub>(p<sub>V</sub> \|\| padding ⊕ IV<sub>V</sub>) | over CBC channel                                                       |
-|      A      | p<sub>A</sub> = "yes" \|\| padding ⊕  IV<sub>V</sub> ⊕  IV<sub>next</sub>                  | attacker A can predict IV<sub>next</sub>                               |
+| A &rarr; S  | p<sub>A</sub> = "yes" \|\| padding ⊕  IV<sub>V</sub> ⊕  IV<sub>next</sub>                  | attacker A can predict IV<sub>next</sub>                               |
 | S &rarr; DB | IV<sub>next</sub>, C<sub>A1</sub> = E<sub>K</sub>(p<sub>A</sub> ⊕ IV<sub>next</sub>)       | over CBC channel, C<sub>A1</sub> 1st ciphertext block of C<sub>A</sub> |
 
 Napadač _A_ zna samo javne informacije: 
