@@ -132,7 +132,7 @@ b"test".hex()
 
 #### XOR-ing two large binary strings
 
-U Python-u ne možemo izravno raditi xor operaciju između podataka tipa `byte` već i trebamo prethodno convertirati u `int`.
+U Python-u ne možemo izravno raditi _xor_ operaciju između podataka tipa `byte` već ih trebamo prethodno convertirati u `int`.
 
 ```python
 A_as_int = int.from_bytes(A_as_bytes, byteorder="big")
