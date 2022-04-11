@@ -24,9 +24,9 @@ CTR mod enkripcije siguran je način enkripcije (osigurava povjerljivost podatak
 Zadatak studenta u okviru vježbe je dekriptirati odgovarajući izazov (_challenge_). Za razliku od prethodnih vježbi, u ovoj vježbi izazov je 
 enkriptiran u CTR enkripcijskom modu, pri čemu je enkripcijski ključ generiran nasumično (nije izveden iz predefinirane tajne vrijednosti _cookie_). Ranjivost _crypto oracle_ u ovoj vježbi proizlazi iz činjenice da se **brojač bira (nasumično) iz ograničenog/malog skupa brojeva**. Posljedica opisanog načina generiranja brojača za CTR mod je ta da će se nakon određenog broja enkripcija brojač ponaviti što napadaču omogućuje dekripciju _ciphertext_-a bez poznavanja enkripcijskog ključa.
 
-Student će iskoristiti gore opisani propust u _crypto oracle_-u i dekriptirati činjenicu o Chuck Norris-u koja je ovaj put enkriptirana u CTR modu. **U osnovi, nakon što student pošalje dovoljan broj poruka serveru na enkripciju u CTR modu, jedna od poruka biti će enkriptirana pod istim _counter_-om (i ključem) kao i činjenica o Chuck Norris-u.** U tom slučaju vrijedi:
+Student će iskoristiti gore opisani propust u _crypto oracle_-u i dekriptirati činjenicu o Chuck Norris-u koja je ovaj put enkriptirana u CTR modu. **U osnovi, nakon što student pošalje dovoljan broj poruka serveru na enkripciju u CTR modu, jedna od poruka biti će enkriptirana pod istim _counter_-om (i ključem) kao i činjenica o Chuck Norris-u.** Uvjerite se da u tom slučaju vrijedi:
 
-ciphertext<sub>Chuck_Norris_fact</sub> ⊕ plaintext<sub>Chuck_Norris_fact</sub> = ciphertext<sub>chosen_plaintext</sub> ⊕ chosen_plaintext 
+ciphertext<sub>Chuck_Norris_fact</sub> ⊕ plaintext<sub>Chuck_Norris_fact</sub> = ciphertext<sub>chosen_plaintext</sub> ⊕ chosen_plaintext
 
 > Zadatak u koracima: _password_ &rarr; token &rarr; Chuck Norris fact. Prisjetite se, _password_ ste otkrili u prethodnoj vježbi.
 
@@ -61,4 +61,4 @@ C_as_bytes = C_as_int.to_bytes(16, "big").hex()
 C_as_string = C_as_bytes.decode(errors="ignore")
 ```
 
-By setting `errors="ignore"` we instruct the interpreter to ignore bytes (do not rise exceptions) that cannot be properly decoded.
+Postavljanjem argumenta `errors="ignore"` nalažemo interpreteru da ignorira bajtove (ne podiže `exception`) koji ne mogu biti dekodirani kao `utf-8` karakteri.
