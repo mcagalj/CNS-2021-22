@@ -42,7 +42,7 @@ Popis oznaka u protokolu:
 Klijent C i server S, po uspješnom prijemu odgovarajućih poruka, provjeravaju digitalne potpise, zatim izvode zajedničku Diffie-Hellman tajnu `shared_secret`, te iz te tajne 256-bitni AES ključ K kojim se enkriptira studentova šala (u CBC modu). Ključ K izvodi se iz `shared_secret` kako je prikazano u nastavku (`HKDF` je tzv. [_hash-based key derivation function_](https://cryptography.io/en/latest/hazmat/primitives/key-derivation-functions/?highlight=hkdf)):
 
 ```python
-const K = HKDF(
+    K = HKDF(
         algorithm=hashes.SHA256(),
         length=32,
         salt=b"ServerClient",
