@@ -1,5 +1,14 @@
 # **Kriptografija i mrežna sigurnost - Lab 8** <!-- omit in toc -->
 
+- [Public key certificates and SSL/TLS protocol](#public-key-certificates-and-ssltls-protocol)
+- [Zadatak](#zadatak)
+  - [Phase 1](#phase-1)
+    - [Create required certificate hierarchy](#create-required-certificate-hierarchy)
+    - [Initial configuration of a reverse proxy](#initial-configuration-of-a-reverse-proxy)
+  - [Phase 2](#phase-2)
+    - [Configure TLS protocol](#configure-tls-protocol)
+    - [Configure TLS client certificate authentication](#configure-tls-client-certificate-authentication)
+
 ## Public key certificates and SSL/TLS protocol
 
 U okviru vježbe student će zaštiti pristup _crypto oracle_ server-u primjenom SSL/TLS protokola. Cilj vježbe je ostvariti siguran kanal između web preglednika i _crypto oracle_ servera, pri čemu će biti osigurane sljedeće sigurnosne usluge: _confidentiality_, _data and origin integrity_, i zaštita od _replay_ napada.
@@ -32,11 +41,9 @@ Vježbu ćemo odraditi u dvije (2) faze. U prvoj fazi ćemo realizirati hijerarh
 <em>(After) Securing access to crypto oracle by hiding it behind a reverse proxy</em>
 </p>
 
-### The task in steps
+### Phase 1
 
-#### Phase 1
-
-##### Create required certificate hierarchy
+#### Create required certificate hierarchy
 
 1. Show that user credentials leak without TLS. Use Wireshark for this.
    - [ ]  Capture `username` and `password`
@@ -47,7 +54,7 @@ Vježbu ćemo odraditi u dvije (2) faze. U prvoj fazi ćemo realizirati hijerarh
 4. Export required certificates and private keys and push them to a GitLab repo.
    > IMPORTANT: Please mind the naming convention; refer to the _reverse proxy_ configuration templates provided in the sequel.
 
-##### Initial configuration of a reverse proxy
+#### Initial configuration of a reverse proxy
 
 1. Make sure that your instance of a reverse proxy is up and running. For this, open a web browser and enter the following url: `http://<yourname>.local`.
    > For example, if your username is normally `doe_john` then use the following url: `http://doejohn.local`.
@@ -109,9 +116,9 @@ Vježbu ćemo odraditi u dvije (2) faze. U prvoj fazi ćemo realizirati hijerarh
 
 Congratulations, you have successfully configured a reverse proxy!
 
-#### Phase 2
+### Phase 2
 
-##### Configure TLS protocol
+#### Configure TLS protocol
 
 1. Update a reverse proxy to support TLS protocol. For this update your configuration file from the previous phase (e.g., `doejohn.local.conf`) as follows:
 
@@ -175,7 +182,7 @@ Congratulations, you have successfully configured a reverse proxy!
    - [ ]  Test `https` connection without CA cert in the browser.
    - [ ]  Test `https` connection with CA cert added to the browser list of trusted CAa.
 
-##### Configure TLS client certificate authentication
+#### Configure TLS client certificate authentication
 
 1. Update your configuration file from the previous phase (e.g., `doejohn.local.conf`) as follows:
 
