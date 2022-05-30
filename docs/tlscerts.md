@@ -242,6 +242,6 @@ Congratulations, you have successfully configured a reverse proxy!
    - [ ]  Understand the problem you encounter and try to fix it.
    - [ ]  Open another web browser and try to connect to _crypto oracle_ server. Understand the observed situation.
    - [ ]  Play with `ssl_verify_client` directive by switching from `on` to `optional`; do not forget to restart the proxy after any change in the configuration file.
-   - [ ] Think how can you make use of `ssl_verify_client optional` and `proxy_set_header  X-SSL-Client-Cert-CN  $ssl_client_s_dn` directives for a more fine-grained authentication. What is the benefit of this approach compared to password-based authentication?
+   - [ ] Think how can you make use of `ssl_verify_client optional` and `proxy_set_header  X-SSL-Client-Cert-CN  $ssl_client_s_dn` directives for more fine-grained authentication and authorization. What is the benefit of this approach compared to password-based authentication?
 
 I hope you realize now how powerfull SSL/TLS protocols is. Let me just add that you use SSL/TLS protocol each time you connect to Eduroam WiFi network (and similar WPA Enterprise WiFi networks), or when you use VPN solutions like OpenVPN. Likewise, your antivirus software gets fresh virus signatures over a secure SSL/TLS connection...ok, I will stop here.
