@@ -219,7 +219,7 @@ Congratulations, you have successfully configured a reverse proxy!
             proxy_pass  http://<your_IP_address>:80;
         }
 
-            error_page 495 496 =403 /403.html;
+        error_page 495 496 =403 /403.html;
     }   
    ```
 
