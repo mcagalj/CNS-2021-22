@@ -213,9 +213,14 @@ Congratulations, you have successfully configured a reverse proxy!
         # pass requests to your REST server (i.e., crypto oracle)
         # lookup your crypto oracle IP address and replace <your_IP_address>
         location / {
-            # This is not required but can be useful
+            if ($ssl_client_verify != SUCCESS) {
+                return 403;
+            }
+
+            # This is not required but can be useful in combination with
+            # "ssl_verify_client optional;" 
             proxy_set_header  X-SSL-Client-Cert-CN  $ssl_client_s_dn;
-            
+            # This is required
             proxy_pass  http://<your_IP_address>:80;
         }
 
