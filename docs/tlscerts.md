@@ -49,7 +49,7 @@ Vježbu ćemo odraditi u dvije (2) faze. U prvoj fazi ćemo realizirati hijerarh
    - [ ]  Capture `username` and `password`
    - [ ]  Capture `JWT token`
 
-2. Install and get acquainted with [XCA](http://xca.hohnstaedt.de/xca) tool/software.
+2. Install and get acquainted with [XCA](https://www.hohnstaedt.de) tool/software.
 3. Create certificate hierarchy as shown in the first figure.
 4. Export required certificates and private keys and push them to a GitLab repo.
    > IMPORTANT: Please mind the naming convention; refer to the _reverse proxy_ configuration templates provided in the sequel.
