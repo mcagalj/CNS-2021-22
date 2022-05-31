@@ -23,7 +23,7 @@ Autentikacija zasnovana na digitalnim certifikatima zahtjeva generiranje i održ
 <em>Certificate hierarchy</em>
 </p>
 
-Za potrebe pokretanja vlastitog _certificate authority (CA)_ entiteta student može koristiti izvrstan alat za upravljanje asimetričnim ključevima i certifikatima [XCA](http://xca.hohnstaedt.de/xca). Alternativno, možete koristiti OpenSSL - [OpenSSL Certificate Authority](https://jamielinux.com/docs/openssl-certificate-authority).
+Za potrebe pokretanja vlastitog _certificate authority (CA)_ entiteta student može koristiti izvrstan alat za upravljanje asimetričnim ključevima i certifikatima [XCA](https://www.hohnstaedt.de). Alternativno, možete koristiti OpenSSL - [OpenSSL Certificate Authority](https://jamielinux.com/docs/openssl-certificate-authority).
 
 ## Zadatak
 
