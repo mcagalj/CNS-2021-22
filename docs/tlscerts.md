@@ -46,8 +46,8 @@ Vježbu ćemo odraditi u dvije (2) faze. U prvoj fazi ćemo realizirati hijerarh
 #### Create required certificate hierarchy
 
 1. Show that user credentials leak without TLS. Use Wireshark for this.
-   - [ ]  Capture `username` and `password`
-   - [ ]  Capture `JWT token`
+   - [ ] Capture `username` and `password`
+   - [ ] Capture `JWT token`
 
 2. Install and get acquainted with [XCA](https://www.hohnstaedt.de) tool/software.
 3. Create certificate hierarchy as shown in the first figure.
@@ -178,9 +178,9 @@ Congratulations, you have successfully configured a reverse proxy!
    > **IMPORTANT:** Mind the new protocol specifier, the URI scheme, `https`.
 
 6. To further your understanding, please run the following tests:
-   - [ ]  Test `https` connection using IP address only.
-   - [ ]  Test `https` connection without CA cert in the browser.
-   - [ ]  Test `https` connection with CA cert added to the browser list of trusted CAa.
+   - [ ] Test `https` connection using IP address only.
+   - [ ] Test `https` connection without CA cert in the browser.
+   - [ ] Test `https` connection with CA cert added to the browser list of trusted CAa.
 
 #### Configure TLS client certificate authentication
 
@@ -238,10 +238,18 @@ Congratulations, you have successfully configured a reverse proxy!
     ```
 
 3. To further your understanding, try to run some tests:
-   - [ ]  Try to connect to your _crypto oracle_ server again. Please use Firefox for this (it will be clear why later).
-   - [ ]  Understand the problem you encounter and try to fix it.
-   - [ ]  Open another web browser and try to connect to _crypto oracle_ server. Understand the observed situation.
-   - [ ]  Play with `ssl_verify_client` directive by switching from `on` to `optional`; do not forget to restart the proxy after any change in the configuration file.
-   - [ ] Think how can you make use of `ssl_verify_client optional` and `proxy_set_header  X-SSL-Client-Cert-CN  $ssl_client_s_dn` directives for more fine-grained authentication and authorization. What is the benefit of this approach compared to password-based authentication?
+   - [ ] Try to connect to your _crypto oracle_ server again. Please use Firefox for this (it will be clear why later).
+   - [ ] Understand the problem you encounter and try to fix it.
+   - [ ] Open another web browser and try to connect to _crypto oracle_ server. Understand the observed situation.
+   - [ ] Play with `ssl_verify_client` directive by switching from `on` to `optional`; do not forget to restart the proxy after any change in the configuration file.
+   - [ ] Think how to make use of `ssl_verify_client optional` and `proxy_set_header  X-SSL-Client-Cert-CN  $ssl_client_s_dn` directives to replace or strengthen password-based login.
+  
+        When setting `ssl_verify_client optional`, of course you want to comment the following part in the configuration file:
+
+        ```bash
+        # if ($ssl_client_verify != SUCCESS) {
+        #     return 403;
+        # }
+        ```
 
 I hope you realize now how powerfull SSL/TLS protocols is. Let me just add that you use SSL/TLS protocol each time you connect to Eduroam WiFi network (and similar WPA Enterprise WiFi networks), or when you use VPN solutions like OpenVPN. Likewise, your antivirus software gets fresh virus signatures over a secure SSL/TLS connection...ok, I will stop here.
